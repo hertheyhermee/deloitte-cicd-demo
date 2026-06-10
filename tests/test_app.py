@@ -17,3 +17,10 @@ def test_index_endpoint():
     assert response.status_code == 200
     data = response.get_json()
     assert "message" in data
+
+def test_version_endpoint():
+    client = app.test_client()
+    response = client.get("/version")
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data["version"] == "1.0.0"
